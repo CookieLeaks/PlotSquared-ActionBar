@@ -1,0 +1,6 @@
+name: PlotSquared-ActionBar
+version: ${project.version}
+main: de.byaple.actionbar.Setup
+api-version: 1.14
+depend: [PlotSquared]
+authors: [DarkLupo5]
