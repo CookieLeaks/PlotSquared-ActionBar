@@ -4,4 +4,4 @@ Ein PlotSquared v5 Addon, dass die Besitzer in der Action Bar anzeigt.
 
 Support
 E-Mail: admin@byaple.de
-Discord: KeksGauner#0624
+Discord: KeksGauner [Dev]#0624
