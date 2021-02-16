@@ -6,4 +6,4 @@ Benötigt Actionbarapi
 
 Support
 E-Mail: admin@byaple.de
-Discord: KeksGauner [Dev]#0624
+Discord: KeksGauner#0624
