@@ -1,8 +1,8 @@
 # PlotSquared-ActionBar
 
-Ein PlotSquared v5 Addon, dass die Besitzer in der Action Bar anzeigt.
+A PlotSquared v5 addon that displays the owners in the action bar.
 
-Benötigt Actionbarapi
+Requires Actionbarapi: https://www.spigotmc.org/resources/actionbarapi-1-8-1-14-2.1315/
 
 Support
 E-Mail: admin@byaple.de
