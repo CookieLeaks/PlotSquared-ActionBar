@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
-import com.connorlinfoot.actionbarapi.ActionBarAPI;
 import com.google.common.eventbus.Subscribe;
-import com.plotsquared.core.api.PlotAPI;
+import com.plotsquared.core.PlotAPI;
 import com.plotsquared.core.events.PlayerEnterPlotEvent;
 import com.plotsquared.core.plot.Plot;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -46,6 +47,6 @@ public class Setup extends JavaPlugin {
     }
 
     public static void sendActionbar(Player player, String message) {
-        ActionBarAPI.sendActionBar(player, ChatColor.translateAlternateColorCodes('&', message));
+        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.translateAlternateColorCodes('&', message)));
     }
 }
