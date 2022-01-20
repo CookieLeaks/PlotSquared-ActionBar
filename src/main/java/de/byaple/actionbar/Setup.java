@@ -31,11 +31,11 @@ public class Setup extends JavaPlugin {
         int plotY = event.getPlot().getId().getY();
 
         if (plot.getOwners().isEmpty())
-            sendActionbar(player, "&aFreies Plot" + " &7| " + plotX + ";" + plotY);
+            sendActionbar(player, "&aFree Plot" + " &7| " + plotX + ";" + plotY);
         else {
             String owner = getName(plot) + "";
             if (owner.equalsIgnoreCase(player.getName()))
-                sendActionbar(player, "&3Dein Plot" + " &7| " + plotX + ";" + plotY);
+                sendActionbar(player, "&3Your Plot" + " &7| " + plotX + ";" + plotY);
             else
                 sendActionbar(player, "&3" + owner + " &7| " + plotX + ";" + plotY);
         }
