@@ -1,6 +1,5 @@
 package de.byaple.actionbar;
 
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,26 +23,29 @@ public class Setup extends JavaPlugin {
 
     @Subscribe
     public void plotEnter(PlayerEnterPlotEvent event) {
-                Player player = Bukkit.getPlayer(event.getPlotPlayer().getName());
-                Plot plot = event.getPlot();
-                int plotX = event.getPlot().getId().getX();
-                int plotY = event.getPlot().getId().getY();
+        Player player = Bukkit.getPlayer(event.getPlotPlayer().getUUID());
+        if (player == null) return;
 
-                if (plot.getOwners().isEmpty()) {
-                    sendActionbar(player, "&aFreies Plot" + " &7| " + plotX + ";" + plotY);
-                } else {
-                    String plot_owner = getName(plot);
-                        sendActionbar(player, "&3" + plot_owner + " &7| " + plotX + ";" + plotY);
-                }
+        Plot plot = event.getPlot();
+        int plotX = event.getPlot().getId().getX();
+        int plotY = event.getPlot().getId().getY();
+
+        if (plot.getOwners().isEmpty())
+            sendActionbar(player, "&aFreies Plot" + " &7| " + plotX + ";" + plotY);
+        else {
+            String owner = getName(plot) + "";
+            if (owner.equalsIgnoreCase(player.getName()))
+                sendActionbar(player, "&3Dein Plot" + " &7| " + plotX + ";" + plotY);
+            else
+                sendActionbar(player, "&3" + owner + " &7| " + plotX + ";" + plotY);
+        }
     }
-
-
-    ArrayList<UUID> uuid = new ArrayList<>();
 
     public static String getName(Plot plot) {
         Set<UUID> uuid = plot.getOwners();
-        UUID firstuuid = uuid.iterator().next();
-        return Bukkit.getOfflinePlayer(firstuuid).getName();
+        UUID firstUuid = uuid.iterator().next();
+
+        return Bukkit.getOfflinePlayer(firstUuid).getName();
     }
 
     public static void sendActionbar(Player player, String message) {

@@ -1,6 +1,7 @@
 name: PlotSquared-ActionBar
 version: ${project.version}
 main: de.byaple.actionbar.Setup
+authors: [ KeksGauner ]
 api-version: 1.16
-depend: [PlotSquared]
-authors: [KeksGauner]
+
+depend: [ PlotSquared ]
