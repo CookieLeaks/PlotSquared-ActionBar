@@ -1,0 +1,8 @@
+# Available placeholders:
+# %plotX%  - the x of the plotID
+# %plotY%  - the y of the plotID
+# %owner%  - the owner of the plot
+plot:
+  free: "&aFree Plot &7| %plotX%;%plotY%"
+  owner: "&3%owner% &7| %plotX%;%plotY%"
+  yourself: "&3Your Plot &7| %plotX%;%plotY%"

@@ -1,6 +1,6 @@
 name: PlotSquared-ActionBar
 version: ${project.version}
-main: de.byaple.actionbar.Setup
+main: de.kleckzz.actionbar.PlotSquaredActionBar
 authors: [ KeksGauner ]
 api-version: 1.16
 

@@ -1,7 +1,8 @@
-package de.byaple.actionbar;
+package de.kleckzz.actionbar;
 
 import java.util.Set;
 import java.util.UUID;
+import java.util.logging.Level;
 
 import com.google.common.eventbus.Subscribe;
 import com.plotsquared.core.PlotAPI;
@@ -14,9 +15,24 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Setup extends JavaPlugin {
+public class PlotSquaredActionBar extends JavaPlugin {
+    private String plot_free;
+    private String plot_owner;
+    private String plot_owner_yourself;
 
     public void onEnable() {
+        if(!this.getServer().getPluginManager().isPluginEnabled("PlotSquared")) {
+            this.getLogger().log(Level.SEVERE, "PlotSquared not found! To use this plugin you need to install PlotSquared!");
+            this.getPluginLoader().disablePlugin(this);
+        }
+
+        this.getConfig().options().copyDefaults(true);
+        this.saveConfig();
+
+        this.plot_free = getConfig().getString("plot.free");
+        this.plot_owner = getConfig().getString("plot.owner");
+        this.plot_owner_yourself = getConfig().getString("plot.yourself");
+
         PlotAPI api = new PlotAPI();
         api.registerListener(this);
     }
@@ -31,13 +47,13 @@ public class Setup extends JavaPlugin {
         int plotY = event.getPlot().getId().getY();
 
         if (plot.getOwners().isEmpty())
-            sendActionbar(player, "&aFree Plot" + " &7| " + plotX + ";" + plotY);
+            sendActionbar(player, plot_free.replace("%plotX%", String.valueOf(plotX)).replace("%plotY%", String.valueOf(plotY)));
         else {
             String owner = getName(plot) + "";
             if (owner.equalsIgnoreCase(player.getName()))
-                sendActionbar(player, "&3Your Plot" + " &7| " + plotX + ";" + plotY);
+                sendActionbar(player, plot_owner_yourself.replace("%plotX%", String.valueOf(plotX)).replace("%plotY%", String.valueOf(plotY)).replace("%owner%", String.valueOf(owner)));
             else
-                sendActionbar(player, "&3" + owner + " &7| " + plotX + ";" + plotY);
+                sendActionbar(player, plot_owner.replace("%plotX%", String.valueOf(plotX)).replace("%plotY%", String.valueOf(plotY)).replace("%owner%", String.valueOf(owner)));
         }
     }
 
